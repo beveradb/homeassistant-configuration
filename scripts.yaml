@@ -1,0 +1,14 @@
+'1545654607535':
+  alias: 'Boost: Heating for 3 hours'
+  sequence:
+  - data:
+      entity_id:
+      - switch.boiler
+      - switch.heating
+    service: homeassistant.turn_on
+  - delay: 00:01
+  - data:
+      entity_id:
+      - switch.boiler
+      - switch.heating
+    service: homeassistant.turn_off

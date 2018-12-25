@@ -1,0 +1,18 @@
+switch.dining_room_ceiling:
+  device_class: light
+device_tracker.google_maps_117449761518599578465:
+  name: Andrew
+device_tracker.google_maps_117231704443313059675:
+  name: Mar
+sensor.hallway_particulate_matter_25_gm3:
+  name: "Particulates PM2.5"
+  friendly_name: "Particulates PM2.5"
+sensor.hallway_particulate_matter_10_gm3:
+  name: "Particulates PM10"
+  friendly_name: "Particulates PM10"
+sensor.hallway_nitrogen_dioxide:
+  name: "NO2"
+  friendly_name: "NO2"
+sensor.hallway_volatile_organic_compounds:
+  name: "VOCs"
+  friendly_name: "VOCs"
