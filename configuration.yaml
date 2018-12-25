@@ -27,6 +27,7 @@ http:
    base_url: !secret http_base_url
    ssl_certificate: /data/data/com.termux/files/home/.homeassistant/sslfullchain.pem
    ssl_key: /data/data/com.termux/files/home/.homeassistant/sslprivkey.pem
+   api_password: !secret http_api_password
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -77,7 +78,7 @@ dyson:
   password: !secret dyson_password
   language: GB
   devices:
-    - device_id: dyson_serial
+    - device_id: !secret dyson_serial
       device_ip: 192.168.0.50
 
 light:
@@ -99,25 +100,4 @@ device_tracker:
   - platform: google_maps
     username: beveridgehomeassistant@gmail.com
     password: !secret beveridgehome_google_password
-
-group:
-    living_room:
-      name: Living Room
-      entities:
-        - light.living_room
-        - switch.living_room_desk_corner
-        - switch.living_room_tv_corner
-    dining_room:
-      name: Dining Room
-      entities:
-        - switch.dining_room_ceiling
-    bedroom:
-      name: Bedroom
-      entities:
-        - light.bedroom
-    hallway:
-      name: Hallway
-      entities:
-        - light.hallway
-        - light.front_landing
 

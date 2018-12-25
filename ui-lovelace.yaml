@@ -1,6 +1,7 @@
 title: Beveridge Home
 views:
   - title: Home
+    path: home
     cards:
       - type: glance
         title: Summary
@@ -14,38 +15,40 @@ views:
           - entity: sensor.power_usage
             name: Power Usage 
             icon: mdi:flash
-          - entity: group.living_room
+          - entity: script.1545654607535
+            name: 3 Hour Boost
+            icon: mdi:clock-fast
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: script.1545654607535
+      - type: entities
+        title: Lights
+        show_header_toggle: false
+        entities:
+          - entity: light.living_room
             name: Living Room
-            icon: mdi:power
-            tap_action:
-              action: call-service
-              service: homeassistant.toggle
-              service_data:
-                entity_id: group.living_room
-          - entity: group.dining_room
+          - entity: switch.dining_room_ceiling
+            icon: mdi:lightbulb
             name: Dining Room
-            icon: mdi:power
-            tap_action:
-              action: call-service
-              service: homeassistant.toggle
-              service_data:
-                entity_id: group.dining_room
-          - entity: group.bedroom
+          - entity: light.bedroom
             name: Bedroom
-            icon: mdi:power
-            tap_action:
-              action: call-service
-              service: homeassistant.toggle
-              service_data:
-                entity_id: group.bedroom
-          - entity: group.hallway
+          - entity: light.hallway
             name: Hallway
+      - type: entities
+        title: Switches
+        show_header_toggle: false
+        entities:
+          - switch.kettle
+          - entity: group.living_room_switches
+            name: Living Room Corners
             icon: mdi:power
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: group.hallway
+                entity_id: group.living_room_switches
           - entity: switch.boiler
             name: Heating
             icon: mdi:fire
@@ -57,25 +60,13 @@ views:
                     switch.boiler,
                     switch.heating
                 ]
-          - entity: script.1545654607535
-            name: 3 Hour Boost
-            icon: mdi:clock-fast
+          - entity: fan.hallway
+            name: Air Purifier
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: script.1545654607535
-      - type: horizontal-stack
-        cards:
-          - type: light
-            entity: light.living_room
-            name: Living Room
-          - type: light
-            entity: light.bedroom
-            name: Bedroom
-          - type: light
-            entity: light.hallway
-            name: Hallway
+                entity_id: fan.hallway
       - type: history-graph
         title: Heating
         entities:
@@ -108,6 +99,7 @@ views:
           - entity: zone.home
 
   - title: Advanced
+    path: advanced
     cards:
       - type: entities
         title: Automations
