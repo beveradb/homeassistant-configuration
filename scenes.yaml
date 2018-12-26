@@ -33,5 +33,59 @@
     group.living_room_ceiling_lights:
       state: true
       brightness_pct: 100
+- name: Bedroom Low
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: true
+      color_name: navajowhite
+      brightness_pct: 40
+    light.bedside_table_lamp:
+      state: true
+      brightness_pct: 20
+- name: Bedroom Medium
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: true
+      color_name: navajowhite
+      brightness_pct: 80
+    light.bedside_table_lamp:
+      state: true
+      brightness_pct: 40
+- name: Bedroom High
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: true
+      color_name: navajowhite
+      brightness_pct: 100
+    light.bedside_table_lamp:
+      state: true
+      brightness_pct: 100
+- name: Hallway Low
+  entities:
+    light.hallway:
+      state: true
+      color_name: navajowhite
+      brightness_pct: 40
+    light.front_landing:
+      state: true
+      brightness_pct: 20
+- name: Hallway Medium
+  entities:
+    light.hallway:
+      state: true
+      color_name: navajowhite
+      brightness_pct: 80
+    light.front_landing:
+      state: true
+      brightness_pct: 40
+- name: Hallway High
+  entities:
+    light.hallway:
+      state: true
+      color_name: navajowhite
+      brightness_pct: 100
+    light.front_landing:
+      state: true
+      brightness_pct: 100
 
 

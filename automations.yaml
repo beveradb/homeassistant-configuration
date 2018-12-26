@@ -15,6 +15,7 @@
       message: Landing light switched on via dash button
     service: notify.homeassistant
   initial_state: true
+
 - id: toggle_hallway_light
   alias: Toggle Hallway Light Andrex Dash
   trigger:
@@ -32,6 +33,7 @@
       message: Hallway light switched on via dash button
     service: notify.homeassistant
   initial_state: true
+
 - id: toggle_master_bedroom_light
   alias: Toggle Master Bedroom Light Ariel Dash
   trigger:
@@ -47,6 +49,7 @@
       message: Bedroom light switched on via dash button
     service: notify.homeassistant
   initial_state: true
+
 - id: toggle_dining_room_light
   alias: Toggle Dining Room Light Dettol Dash
   trigger:
@@ -64,6 +67,7 @@
       message: Dining room light switched on via dash button
     service: notify.homeassistant
   initial_state: true
+
 - id: weekdays_heating_on
   alias: Weekdays Heating On
   trigger:
@@ -90,6 +94,7 @@
       message: Heating switched on by homeassistant according to weekday schedule
     service: notify.homeassistant
   initial_state: false
+
 - id: weekdays_heating_off
   alias: Weekdays Heating Off
   trigger:
@@ -116,6 +121,7 @@
       message: Heating switched off by homeassistant according to weekday schedule
     service: notify.homeassistant
   initial_state: false
+
 - id: weekends_heating_on
   alias: Weekends Heating On
   trigger:
@@ -139,6 +145,7 @@
       message: Heating switched on by homeassistant according to weekend schedule
     service: notify.homeassistant
   initial_state: false
+
 - id: weekends_heating_off
   alias: Weekends Heating Off
   trigger:
@@ -162,6 +169,7 @@
       message: Heating switched off by homeassistant according to weekend schedule
     service: notify.homeassistant
   initial_state: false
+
 - id: '1545371565523'
   alias: Turn Porch Light On At 4PM
   trigger:
@@ -173,6 +181,7 @@
       entity_id: light.porch_outdoor_light
     service: light.turn_on
   initial_state: true
+
 - id: '1545371589939'
   alias: Turn Porch Light Off At 10:30PM
   trigger:
@@ -184,6 +193,7 @@
       entity_id: light.porch_outdoor_light
     service: light.turn_off
   initial_state: true
+
 - id: '1545429145548'
   alias: Dyson Fan On Schedule
   trigger:
@@ -207,6 +217,7 @@
       oscillating: true
     service: fan.oscillate
   initial_state: true
+
 - id: '1545429935532'
   alias: Dyson Fan Off Schedule
   trigger:
@@ -222,6 +233,7 @@
       entity_id: fan.hallway
     service: fan.turn_off
   initial_state: true
+
 - id: '1545430945695'
   alias: Flash colours in living room at 3:30am so Andrew goes to bed
   trigger:
@@ -343,6 +355,7 @@
       entity_id: light.living_room_uplighter
     service: light.turn_off
   initial_state: true
+
 - id: save_power_at_night
   alias: Save Power at 1am
   trigger:

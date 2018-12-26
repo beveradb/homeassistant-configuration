@@ -16,3 +16,49 @@ sensor.hallway_nitrogen_dioxide:
 sensor.hallway_volatile_organic_compounds:
   name: "VOCs"
   friendly_name: "VOCs"
+sensor.hallway_temperature:
+  name: Temperature
+switch.kettle:
+  name: Kettle
+  icon: mdi:kettle
+group.living_room_switches:
+  name: Living Room Corners
+  icon: mdi:power-socket-uk
+group.heating:
+  name: Heating
+  icon: mdi:radiator
+fan.hallway:
+  name: Air Purifier
+  icon: mdi:air-conditioner
+sensor.power_usage:
+  name: Power Usage 
+  icon: mdi:flash
+script.heating_boost:
+  name: 3 Hour Boost
+  icon: mdi:clock-fast
+switch.dining_room_ceiling:
+  name: Dining Room
+  icon: mdi:lightbulb
+light.living_room:
+  name: Living Room Lights
+scene.living_room_low:
+  icon: mdi:brightness-5
+scene.living_room_medium:
+  icon: mdi:brightness-6
+scene.living_room_high:
+  icon: mdi:brightness-7
+scene.bedroom_low:
+  icon: mdi:brightness-5
+scene.bedroom_medium:
+  icon: mdi:brightness-6
+scene.bedroom_high:
+  icon: mdi:brightness-7
+scene.hallway_low:
+  icon: mdi:brightness-5
+scene.hallway_medium:
+  icon: mdi:brightness-6
+scene.hallway_high:
+  icon: mdi:brightness-7
+
+
+

@@ -1,10 +1,13 @@
 title: Beveridge Home
+resources:
+  - url: /local/stylesheet.css?v=6
+    type: css
 views:
   - title: Home
     path: home
     cards:
       - type: glance
-        title: Summary
+        columns: 4
         entities:
           - entity: device_tracker.google_maps_117449761518599578465
             name: Andrew
@@ -13,50 +16,21 @@ views:
           - entity: sensor.hallway_temperature
             name: Temperature
           - entity: sensor.power_usage
-            name: Power Usage 
-            icon: mdi:flash
+            name: Electricity
           - entity: script.heating_boost
-            name: 3 Hour Boost
-            icon: mdi:clock-fast
+            name: Boost Heat
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
                 entity_id: script.heating_boost
-      - type: entities
-        title: Lights
-        show_header_toggle: false
-        entities:
-          - entity: light.living_room
-            name: Living Room
-          - entity: switch.dining_room_ceiling
-            icon: mdi:lightbulb
-            name: Dining Room
-          - entity: light.bedroom
-            name: Bedroom
-          - entity: light.hallway
-            name: Hallway
-          - entity: scene.living_room_low
-          - entity: scene.living_room_medium
-          - entity: scene.living_room_high
-      - type: entities
-        title: Switches
-        show_header_toggle: false
-        entities:
           - entity: switch.kettle
-            name: Kettle
-            icon: mdi:kettle
-          - entity: group.living_room_switches
-            name: Living Room Corners
-            icon: mdi:power-socket-uk
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: group.living_room_switches
+                entity_id: switch.kettle
           - entity: group.heating
-            name: Heating
-            icon: mdi:radiator
             tap_action:
               action: call-service
               service: homeassistant.toggle
@@ -64,12 +38,78 @@ views:
                 entity_id: group.heating
           - entity: fan.hallway
             name: Air Purifier
-            icon: mdi:air-conditioner
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
                 entity_id: fan.hallway
+      - type: picture-glance
+        image: /local/living_room.png
+        title: Living room
+        tap_action:
+          action: call-service
+          service: homeassistant.toggle
+          service_data:
+            entity_id: group.living_room
+        entities:
+          - entity: scene.living_room_low
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: scene.living_room_medium
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: scene.living_room_high
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: light.living_room
+          - entity: group.living_room_switches
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: group.living_room_switches
+      - type: picture-glance
+        image: /local/dining_room.png
+        title: Dining room
+        entities:
+          - entity: switch.dining_room_ceiling
+      - type: picture-glance
+        image: /local/hallway.png
+        title: Hallway
+        entities:
+          - entity: scene.hallway_low
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: scene.hallway_medium
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: scene.hallway_high
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: light.hallway
+      - type: picture-glance
+        image: /local/master_bedroom.png
+        title: Bedroom
+        entities:
+          - entity: scene.bedroom_low
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: scene.bedroom_medium
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: scene.bedroom_high
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+          - entity: light.bedroom
       - type: history-graph
         title: Heating
         entities:
@@ -92,15 +132,7 @@ views:
             name: NO2
           - entity: sensor.hallway_humidity
             name: Humidity
-      - type: map
-        title: Locations
-        aspect_ratio: 16x9
-        default_zoom: 8
-        entities:
-          - entity: device_tracker.google_maps_117449761518599578465
-          - entity: device_tracker.google_maps_117231704443313059675
-          - entity: zone.home
-
+            
   - title: Automation
     path: automation
     cards:
