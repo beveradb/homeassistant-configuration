@@ -15,14 +15,14 @@ views:
           - entity: sensor.power_usage
             name: Power Usage 
             icon: mdi:flash
-          - entity: script.1545654607535
+          - entity: script.heating_boost
             name: 3 Hour Boost
             icon: mdi:clock-fast
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: script.1545654607535
+                entity_id: script.heating_boost
       - type: entities
         title: Lights
         show_header_toggle: false
@@ -36,32 +36,35 @@ views:
             name: Bedroom
           - entity: light.hallway
             name: Hallway
+          - entity: scene.living_room_low
+          - entity: scene.living_room_medium
+          - entity: scene.living_room_high
       - type: entities
         title: Switches
         show_header_toggle: false
         entities:
-          - switch.kettle
+          - entity: switch.kettle
+            name: Kettle
+            icon: mdi:kettle
           - entity: group.living_room_switches
             name: Living Room Corners
-            icon: mdi:power
+            icon: mdi:power-socket-uk
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
                 entity_id: group.living_room_switches
-          - entity: switch.boiler
+          - entity: group.heating
             name: Heating
-            icon: mdi:fire
+            icon: mdi:radiator
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: [
-                    switch.boiler,
-                    switch.heating
-                ]
+                entity_id: group.heating
           - entity: fan.hallway
             name: Air Purifier
+            icon: mdi:air-conditioner
             tap_action:
               action: call-service
               service: homeassistant.toggle
@@ -77,6 +80,8 @@ views:
       - type: history-graph
         title: 'Air Quality'
         entities:
+          - entity: fan.hallway
+            name: Purifier
           - entity: sensor.hallway_particulate_matter_25_gm3
             name: PM2.5
           - entity: sensor.hallway_particulate_matter_10_gm3
@@ -87,8 +92,6 @@ views:
             name: NO2
           - entity: sensor.hallway_humidity
             name: Humidity
-          - entity: fan.hallway
-            name: Purifier
       - type: map
         title: Locations
         aspect_ratio: 16x9
@@ -98,37 +101,15 @@ views:
           - entity: device_tracker.google_maps_117231704443313059675
           - entity: zone.home
 
-  - title: Advanced
-    path: advanced
+  - title: Automation
+    path: automation
     cards:
       - type: entities
         title: Automations
         show_header_toggle: false
         entities:
-          - automation.dyson_fan_off_schedule
-          - automation.dyson_fan_on_schedule
-          - automation.flash_colours_in_living_room_at_330am_so_andrew_goes_to_bed
-          - automation.hallway_temperature_above_22_degrees
-          - automation.hallway_temperature_below_17_degrees
-          - automation.save_power_at_2am
-          - automation.temp_switch_heating_off_at_3am
-          - automation.toggle_dining_room_light_dettol_dash
-          - automation.toggle_hallway_light_andrex_dash
-          - automation.toggle_landing_light_finish_dash
-          - automation.toggle_master_bedroom_light_ariel_dash
-          - automation.turn_porch_light_off_at_1030pm
-          - automation.turn_porch_light_on_at_4pm
-          - automation.weekdays_heating_off
-          - automation.weekdays_heating_on
-          - automation.weekends_heating_off
-          - automation.weekends_heating_on
+          - group.all_automations
 
-      - type: entities
-        title: Fan
-        show_header_toggle: false
-        entities:
-          - fan.hallway
-         
       - type: entities
         title: Groups
         show_header_toggle: false
@@ -140,65 +121,3 @@ views:
           - group.all_scripts
           - group.all_switches
 
-      - type: entities
-        title: Lights
-        show_header_toggle: false
-        entities:
-          - light.bedroom
-          - light.bedside_table_lamp
-          - light.front_landing
-          - light.front_landing_ceiling
-          - light.hallway
-          - light.hallway_pendant
-          - light.kallax_lamp
-          - light.living_room
-          - light.living_room_ceiling_1
-          - light.living_room_ceiling_2
-          - light.living_room_ceiling_3
-          - light.living_room_ceiling_4
-          - light.living_room_ceiling_5
-          - light.living_room_ceiling_6
-          - light.living_room_uplighter
-          - light.master_bedroom_ceiling_pendant
-          - light.porch_outdoor_light
-
-      - type: entities
-        title: Switches
-        show_header_toggle: false
-        entities:
-          - switch.boiler
-          - switch.dining_room_ceiling
-          - switch.heating
-          - switch.kettle
-          - switch.living_room_desk_corner
-          - switch.living_room_tv_corner
-          - switch.spare_1
-          - switch.spare_2
-          - switch.spare_bedroom_heater
-
-      - type: entities
-        title: Script
-        show_header_toggle: false
-        entities:
-          - script.1545654607535
-
-      - type: entities
-        title: Sensors
-        show_header_toggle: false
-        entities:
-          - sensor.hallway_carbon_filter_state
-          - sensor.hallway_hepa_filter_state
-          - sensor.hallway_humidity
-          - sensor.hallway_nitrogen_dioxide
-          - sensor.hallway_particulate_matter_10_gm3
-          - sensor.hallway_particulate_matter_25_gm3
-          - sensor.hallway_temperature
-          - sensor.hallway_volatile_organic_compounds
-          - sensor.power_usage
-
-      - type: entities
-        title: Sun
-        show_header_toggle: false
-        entities:
-          - sun.sun
-         

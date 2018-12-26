@@ -53,6 +53,24 @@ logbook:
 # Enables a map showing the location of tracked devices
 map:
 
+zone:
+  # This will override the default home zone
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 100
+    icon: mdi:account-multiple
+  - name: Work (M)
+    latitude: 55.952003
+    longitude: -3.204456
+    radius: 100
+    icon: mdi:worker
+  - name: Sant Cugat
+    latitude: 41.468059
+    longitude: 2.078470
+    radius: 30000
+    icon: mdi:account-group
+
 # Track the sun
 sun:
 
@@ -63,15 +81,14 @@ tts:
 # Cloud
 cloud:
 
+mqtt:
+  broker: 192.168.0.15
+  client_id: hassmqttclient
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-
-tuya:
-   username: !secret tuya_username
-   password: !secret tuya_password
-   country_code: 44
-   platform: smart_life
+scene: !include scenes.yaml
 
 dyson:
   username: !secret dyson_username
@@ -100,4 +117,106 @@ device_tracker:
   - platform: google_maps
     username: beveridgehomeassistant@gmail.com
     password: !secret beveridgehome_google_password
+
+# This enables the Cloud-based Tuya integration, which only works when internet is available.
+# Since we're controlling our heating and some of the lights via Tuya devices, this isn't acceptable.
+#tuya:
+#   username: !secret tuya_username
+#   password: !secret tuya_password
+#   country_code: 44
+#   platform: smart_life
+
+# Instead, we've replaced this with the local pytuya-based version below, from https://github.com/slomanl1/tuya-homeassistant 
+
+switch:
+  - platform: tuyalocal
+    name: Kettle
+    host: 192.168.0.60
+    local_key: !secret smart_plug_1_local_key
+    device_id: !secret smart_plug_1_device_id
+  - platform: tuyalocal
+    name: Guest Fan Heater
+    host: 192.168.0.61
+    local_key: !secret smart_plug_2_local_key 
+    device_id: !secret smart_plug_2_device_id 
+  - platform: tuyalocal
+    name: TV Corner
+    host: 192.168.0.62
+    local_key: !secret smart_plug_3_local_key 
+    device_id: !secret smart_plug_3_device_id 
+  - platform: tuyalocal
+    name: Desk Corner
+    host: 192.168.0.63
+    local_key: !secret smart_plug_4_local_key 
+    device_id: !secret smart_plug_4_device_id 
+# Commented out as these smart plugs are currently disconnected/unused
+#  - platform: tuyalocal
+#    name: Smart Plug 5
+#    host: 192.168.0.64
+#    local_key: !secret smart_plug_5_local_key 
+#    device_id: !secret smart_plug_5_device_id 
+#  - platform: tuyalocal
+#    name: Smart Plug 6
+#    host: 192.168.0.65
+#    local_key: !secret smart_plug_6_local_key 
+#    device_id: !secret smart_plug_6_device_id 
+  - platform: tuyalocal
+    name: Heating
+    host: 192.168.0.66
+    local_key: !secret smart_plug_7_local_key 
+    device_id: !secret smart_plug_7_device_id 
+  - platform: tuyalocal
+    name: Boiler
+    host: 192.168.0.67
+    local_key: !secret smart_plug_8_local_key 
+    device_id: !secret smart_plug_8_device_id 
+  - platform: tuyalocal
+    name: Dining Room Ceiling
+    host: 192.168.0.69
+    local_key: !secret sonoff_tuya_1_local_key 
+    device_id: !secret sonoff_tuya_1_device_id 
+
+google_assistant:
+  project_id: beveridge-homeassistant
+  api_key: !secret google_homegraph_api_key
+  expose_by_default: false
+  exposed_domains:
+    - switch
+    - light
+    - fan
+    - group
+    - scene
+    - script
+  entity_config:
+    group.living_room:
+      expose: true
+    group.dining_room:
+      expose: true
+    light.bedroom:
+      expose: true
+      name: Bedroom Lights
+    light.hallway:
+      expose: true
+      name: Hallway Light
+    light.front_landing:
+      expose: true
+      name: Landing Light
+    group.heating:
+      expose: true
+    light.living_room:
+      expose: true
+      name: Living Room Lights
+    script.heating_boost:
+      expose: true
+      name: Heating Boost
+    scene.living_room_low:
+      expose: true
+      name: Living Room Low
+    scene.living_room_medium:
+      expose: true
+      name: Living Room Medium
+    scene.living_room_high:
+      expose: true
+      name: Living Room High
+
 

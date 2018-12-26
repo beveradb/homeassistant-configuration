@@ -2,12 +2,22 @@ living_room:
   name: Living Room
   entities:
     - light.living_room
-    - switch.living_room_desk_corner
-    - switch.living_room_tv_corner
-living_room_switches:
+    - switch.desk_corner
+    - switch.tv_corner
+living_room_ceiling_lights:
+  name: Living Room Ceiling Lights
   entities:
-    - switch.living_room_desk_corner
-    - switch.living_room_tv_corner
+    - light.living_room_ceiling_1
+    - light.living_room_ceiling_2
+    - light.living_room_ceiling_3
+    - light.living_room_ceiling_4
+    - light.living_room_ceiling_5
+    - light.living_room_ceiling_6
+living_room_switches:
+  name: Living Room Corners
+  entities:
+    - switch.desk_corner
+    - switch.tv_corner
 dining_room:
   name: Dining Room
   entities:
@@ -21,3 +31,17 @@ hallway:
   entities:
     - light.hallway
     - light.front_landing
+all_shared_spaces:
+  name: All Shared Spaces
+  entities:
+    - groups.living_room
+    - groups.dining_room
+    - groups.hallway
+heating:
+  name: Heating
+  entities:
+    - switch.heating
+    - switch.boiler
+
+
+

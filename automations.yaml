@@ -84,8 +84,7 @@
   action:
   - data:
       entity_id:
-      - switch.boiler
-      - switch.heating
+      - group.heating
     service: switch.turn_on
   - data:
       message: Heating switched on by homeassistant according to weekday schedule
@@ -111,8 +110,7 @@
   action:
   - data:
       entity_id:
-      - switch.boiler
-      - switch.heating
+      - group.heating
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant according to weekday schedule
@@ -135,8 +133,7 @@
   action:
   - data:
       entity_id:
-      - switch.boiler
-      - switch.heating
+      - group.heating
     service: switch.turn_on
   - data:
       message: Heating switched on by homeassistant according to weekend schedule
@@ -159,8 +156,7 @@
   action:
   - data:
       entity_id:
-      - switch.boiler
-      - switch.heating
+      - group.heating
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant according to weekend schedule
@@ -210,9 +206,6 @@
       entity_id: fan.hallway
       oscillating: true
     service: fan.oscillate
-  - data:
-      message: Dyson fan switched on by homeassistant according to schedule
-    service: notify.homeassistant
   initial_state: true
 - id: '1545429935532'
   alias: Dyson Fan Off Schedule
@@ -228,9 +221,6 @@
   - data:
       entity_id: fan.hallway
     service: fan.turn_off
-  - data:
-      message: Dyson fan switched off by homeassistant according to schedule
-    service: notify.homeassistant
   initial_state: true
 - id: '1545430945695'
   alias: Flash colours in living room at 3:30am so Andrew goes to bed
@@ -250,116 +240,102 @@
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: blue
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
   - data:
-      brightness_pct: 100
       color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: papayawhip
       entity_id: light.living_room_uplighter
     service: light.turn_on
   - delay: '1'
@@ -367,59 +343,17 @@
       entity_id: light.living_room_uplighter
     service: light.turn_off
   initial_state: true
-- id: '1545434220196'
-  alias: Save Power at 2am
+- id: save_power_at_night
+  alias: Save Power at 1am
   trigger:
-  - at: 02:00:00
+  - at: 01:00:00
     platform: time
   condition: []
   action:
   - data:
       entity_id:
-      - light.hallway
-      - light.front_landing
-      - light.living_room
-    service: light.turn_off
+      - group.all_shared_spaces
+    service: homeassistant.turn_off
   - data:
-      entity_id:
-      - switch.living_room_desk_corner
-      - switch.living_room_tv_corner
-      - switch.dining_room_ceiling
-    service: switch.turn_off
-  - data:
-      message: Lights and living room switched off by homeassistant to save power
+      message: All shared spaces switched off by homeassistant to save power
     service: notify.homeassistant
-- id: '1545523893087'
-  alias: Hallway Temperature Below 17 Degrees
-  trigger:
-  - below: '17'
-    entity_id: sensor.hallway_temperature
-    platform: numeric_state
-  condition: []
-  action:
-  - data:
-      message: Hallway temperature dropped below 17 degrees
-    service: notify.homeassistant
-- id: '1545523947636'
-  alias: Hallway Temperature Above 22 Degrees
-  trigger:
-  - above: '22'
-    entity_id: sensor.hallway_temperature
-    platform: numeric_state
-  condition: []
-  action:
-  - data:
-      message: Hallway temperature above 22 degrees
-    service: notify.homeassistant
-- id: '1545525804822'
-  alias: 'Temp: Switch heating off at 3am'
-  trigger:
-  - at: 03:00:00
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - switch.boiler
-      - switch.heating
-    service: switch.turn_off
