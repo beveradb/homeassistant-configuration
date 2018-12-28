@@ -1,3 +1,11 @@
+- name: Living Room Off
+  entities:
+    light.living_room_uplighter:
+      state: false
+    light.kallax_lamp:
+      state: false
+    group.living_room_ceiling_lights:
+      state: false
 - name: Living Room Low
   entities:
     light.living_room_uplighter:
@@ -33,6 +41,12 @@
     group.living_room_ceiling_lights:
       state: true
       brightness_pct: 100
+- name: Bedroom Off
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: false
+    light.bedside_table_lamp:
+      state: false
 - name: Bedroom Low
   entities:
     light.master_bedroom_ceiling_pendant:
@@ -60,6 +74,12 @@
     light.bedside_table_lamp:
       state: true
       brightness_pct: 100
+- name: Hallway Off
+  entities:
+    light.hallway:
+      state: false
+    light.front_landing:
+      state: false
 - name: Hallway Low
   entities:
     light.hallway:
@@ -87,5 +107,4 @@
     light.front_landing:
       state: true
       brightness_pct: 100
-
 

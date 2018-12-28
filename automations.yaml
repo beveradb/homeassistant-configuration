@@ -370,3 +370,4 @@
   - data:
       message: All shared spaces switched off by homeassistant to save power
     service: notify.homeassistant
+

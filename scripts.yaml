@@ -1,10 +1,50 @@
 heating_boost:
   alias: 'Boost: Heating for 3 hours'
   sequence:
-  - data:
+  - service: homeassistant.turn_on
+    data:
       entity_id: group.heating
-    service: homeassistant.turn_on
-  - delay: 00:01
-  - data:
+  - delay: 03:00
+  - service: homeassistant.turn_off
+    data:
       entity_id: group.heating
-    service: homeassistant.turn_off
+    
+fan_off:
+  alias: 'Fan Off'
+  sequence:
+  - service: fan.turn_off
+    data:
+      entity_id: fan.hallway
+
+fan_auto:
+  alias: 'Fan Auto'
+  sequence:
+  - service: fan.turn_on
+    data:
+      entity_id: fan.hallway
+      speed: 'AUTO'
+  - service: fan.oscillate
+    data:
+      entity_id: fan.hallway
+      oscillating: true
+  - service: fan.dyson_set_night_mode
+    data:
+      entity_id: fan.hallway
+      oscillating: false
+    
+fan_max:
+  alias: 'Fan Max'
+  sequence:
+  - service: fan.turn_on
+    data:
+      entity_id: fan.hallway
+      speed: 10
+  - service: fan.oscillate
+    data:
+      entity_id: fan.hallway
+      oscillating: true
+  - service: fan.dyson_set_night_mode
+    data:
+      entity_id: fan.hallway
+      oscillating: false
+

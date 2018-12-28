@@ -1,155 +1,330 @@
-title: Beveridge Home
+title: 'Beveridge Home'
 resources:
   - url: /local/stylesheet.css?v=6
     type: css
+  - url: /local/vertical-stack-in-card.js?v=1
+    type: js
+  - url: /local/monster-card.js?v=2
+    type: js
 views:
-  - title: Home
+  - title: 'Home'
     path: home
     cards:
-      - type: glance
-        columns: 4
-        entities:
-          - entity: device_tracker.google_maps_117449761518599578465
-            name: Andrew
-          - entity: device_tracker.google_maps_117231704443313059675
-            name: Mar
-          - entity: sensor.hallway_temperature
-            name: Temperature
-          - entity: sensor.power_usage
-            name: Electricity
-          - entity: script.heating_boost
-            name: Boost Heat
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-glance
+            image: /local/living_room.png
+            title: 'Living room'
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: script.heating_boost
-          - entity: switch.kettle
+                entity_id: group.living_room
+            entities:
+              - entity: scene.living_room_off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_room_off
+              - entity: scene.living_room_low
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_room_low
+              - entity: scene.living_room_medium
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_room_medium
+              - entity: scene.living_room_high
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_room_high
+              - entity: group.living_room_switches
+                tap_action:
+                  action: call-service
+                  service: homeassistant.toggle
+                  service_data:
+                    entity_id: group.living_room_switches
+
+          - type: picture-glance
+            image: /local/kitchen.png
+            title: 'Kitchen'
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: switch.kettle
-          - entity: group.heating
+                entity_id: group.kitchen
+            entities:
+              - entity: switch.dining_room_ceiling
+
+          - type: picture-glance
+            image: /local/dining_room.png
+            title: 'Dining room'
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: group.heating
-          - entity: fan.hallway
-            name: Air Purifier
+                entity_id: group.dining_room
+            entities:
+              - entity: switch.dining_room_ceiling
+
+          - type: picture-glance
+            image: /local/hallway.png
+            title: 'Hallway'
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: fan.hallway
-      - type: picture-glance
-        image: /local/living_room.png
-        title: Living room
-        tap_action:
-          action: call-service
-          service: homeassistant.toggle
-          service_data:
-            entity_id: group.living_room
-        entities:
-          - entity: scene.living_room_low
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: scene.living_room_medium
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: scene.living_room_high
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: light.living_room
-          - entity: group.living_room_switches
+                entity_id: group.hallway
+            entities:
+              - entity: scene.hallway_off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.hallway_off
+              - entity: scene.hallway_low
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.hallway_low
+              - entity: scene.hallway_medium
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.hallway_medium
+              - entity: scene.hallway_high
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.hallway_high
+
+          - type: picture-glance
+            image: /local/master_bedroom.png
+            title: 'Bedroom'
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: group.living_room_switches
-      - type: picture-glance
-        image: /local/dining_room.png
-        title: Dining room
-        entities:
-          - entity: switch.dining_room_ceiling
-      - type: picture-glance
-        image: /local/hallway.png
-        title: Hallway
-        entities:
-          - entity: scene.hallway_low
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: scene.hallway_medium
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: scene.hallway_high
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: light.hallway
-      - type: picture-glance
-        image: /local/master_bedroom.png
-        title: Bedroom
-        entities:
-          - entity: scene.bedroom_low
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: scene.bedroom_medium
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: scene.bedroom_high
-            tap_action:
-              action: call-service
-              service: scene.turn_on
-          - entity: light.bedroom
-      - type: history-graph
-        title: Heating
-        entities:
-          - entity: sensor.hallway_temperature
-            name: Temperature
-          - entity: sensor.power_usage
-            name: Power Usage
-      - type: history-graph
+                entity_id: group.bedroom
+            entities:
+              - entity: scene.bedroom_off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bedroom_off
+              - entity: scene.bedroom_low
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bedroom_low
+              - entity: scene.bedroom_medium
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bedroom_medium
+              - entity: scene.bedroom_high
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bedroom_high
+
+      - type: vertical-stack
+        cards:
+          - type: custom:vertical-stack-in-card
+            title: 'Heating'
+            cards:
+              - type: glance
+                columns: 4
+                entities:
+                  - entity: sensor.wirelesstag_hallway_temperature
+                    name: 'Temperature'
+                  - entity: script.heating_boost
+                    name: '3 Hour Boost'
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: script.heating_boost
+                  - entity: switch.boiler
+                    name: 'Heating'
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: group.heating
+                  - entity: sensor.power_usage
+                    name: 'Electricity'
+    
+              - type: history-graph
+                entities:
+                  - entity: group.heating
+                  - entity: sensor.wirelesstag_hallway_temperature
+                    name: 'Hallway'
+                  - entity: sensor.wirelesstag_living_room_temperature
+                    name: 'Living Room'
+                  - entity: sensor.wirelesstag_bedroom_temperature
+                    name: 'Bedroom'
+                
+          - type: custom:vertical-stack-in-card
+            title: 'Power Usage'
+            cards:
+              - type: glance
+                columns: 4
+                entities:
+                  - entity: device_tracker.google_maps_117449761518599578465
+                    name: 'Andrew'
+                  - entity: device_tracker.google_maps_117231704443313059675
+                    name: 'Mar'
+                  - entity: switch.kettle
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: switch.kettle
+                  - entity: group.all_shared_spaces
+                    name: Save Power
+                    icon: mdi:sleep
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.turn_off
+                      service_data:
+                        entity_id: group.all_shared_spaces
+              - type: history-graph
+                entities:
+                  - entity: sensor.power_usage
+                    name: 'Power Usage'
+
+      - type: custom:vertical-stack-in-card
         title: 'Air Quality'
-        entities:
-          - entity: fan.hallway
-            name: Purifier
-          - entity: sensor.hallway_particulate_matter_25_gm3
-            name: PM2.5
-          - entity: sensor.hallway_particulate_matter_10_gm3
-            name: PM10
-          - entity: sensor.hallway_volatile_organic_compounds
-            name: VOCs
-          - entity: sensor.hallway_nitrogen_dioxide
-            name: NO2
-          - entity: sensor.hallway_humidity
-            name: Humidity
-            
-  - title: Automation
-    path: automation
+        cards:
+          - type: glance
+            columns: 4
+            show_state: false
+            entities:
+              - entity: script.fan_off
+                name: 'Off'
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.fan_off
+              - entity: script.fan_auto
+                name: 'Auto'
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.fan_auto
+              - entity: script.fan_max
+                name: 'Max'
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.fan_max
+              - entity: fan.hallway
+                name: 'Purifier'
+
+          - type: history-graph
+            entities:
+              - entity: fan.hallway
+                name: 'Purifier'
+
+          - type: history-graph
+            entities:
+              - entity: sensor.hallway_particulate_matter_25_gm3
+                name: 'PM2.5'
+              - entity: sensor.hallway_particulate_matter_10_gm3
+                name: 'PM10'
+
+          - type: history-graph
+            entities:
+              - entity: sensor.hallway_volatile_organic_compounds
+                name: 'VOCs'
+              - entity: sensor.hallway_nitrogen_dioxide
+                name: 'NO2'
+              - entity: sensor.wirelesstag_hallway_humidity
+                name: 'Hallway RH'
+              - entity: sensor.wirelesstag_living_room_humidity
+                name: 'Living Room RH'
+              - entity: sensor.wirelesstag_bedroom_humidity
+                name: 'Bedroom RH'
+
+  - title: All
+    path: all
+    panel: true
     cards:
-      - type: entities
-        title: Automations
-        show_header_toggle: false
-        entities:
-          - group.all_automations
-
-      - type: entities
-        title: Groups
-        show_header_toggle: false
-        entities:
-          - group.all_automations
-          - group.all_devices
-          - group.all_fans
-          - group.all_lights
-          - group.all_scripts
-          - group.all_switches
-
+    - type: vertical-stack
+      cards:
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Lights
+            columns: 10
+          filter:
+            include:
+              - domain: light
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Switches
+            columns: 10
+          filter:
+            include:
+              - domain: switch
+              - domain: fan
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Binary Sensors
+            columns: 10
+          filter:
+            include:
+              - domain: binary_sensor
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Sensors
+            columns: 10
+          filter:
+            include:
+              - domain: sensor
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Devices
+            columns: 10
+          filter:
+            include:
+              - domain: device_tracker
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Scripts
+            columns: 10
+          filter:
+            include:
+              - domain: script
+        - type: custom:monster-card
+          card:
+            type: glance
+            title: Automations
+            columns: 10
+          filter:
+            include:
+              - domain: automation
+        

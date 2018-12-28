@@ -1,5 +1,3 @@
-switch.dining_room_ceiling:
-  device_class: light
 device_tracker.google_maps_117449761518599578465:
   name: Andrew
 device_tracker.google_maps_117231704443313059675:
@@ -27,6 +25,10 @@ group.living_room_switches:
 group.heating:
   name: Heating
   icon: mdi:radiator
+switch.boiler:
+  icon: mdi:radiator
+switch.heating:
+  icon: mdi:radiator
 fan.hallway:
   name: Air Purifier
   icon: mdi:air-conditioner
@@ -41,24 +43,35 @@ switch.dining_room_ceiling:
   icon: mdi:lightbulb
 light.living_room:
   name: Living Room Lights
+scene.living_room_off:
+  icon: mdi:power-off
 scene.living_room_low:
-  icon: mdi:brightness-5
+  icon: mdi:brightness-4
 scene.living_room_medium:
   icon: mdi:brightness-6
 scene.living_room_high:
   icon: mdi:brightness-7
+scene.bedroom_off:
+  icon: mdi:power-off
 scene.bedroom_low:
-  icon: mdi:brightness-5
+  icon: mdi:brightness-4
 scene.bedroom_medium:
   icon: mdi:brightness-6
 scene.bedroom_high:
   icon: mdi:brightness-7
+scene.hallway_off:
+  icon: mdi:power-off
 scene.hallway_low:
-  icon: mdi:brightness-5
+  icon: mdi:brightness-4
 scene.hallway_medium:
   icon: mdi:brightness-6
 scene.hallway_high:
   icon: mdi:brightness-7
-
+script.fan_off:
+  icon: mdi:fan-off
+script.fan_auto:
+  icon: mdi:fan
+script.fan_max:
+  icon: mdi:speedometer
 
 

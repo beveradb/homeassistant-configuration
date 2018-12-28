@@ -15,6 +15,7 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  javascript_version: latest
 
 lovelace:
   mode: yaml
@@ -107,6 +108,22 @@ sensor:
     electricity:
       electricity_serial: !secret loopenergy_serial
       electricity_secret: !secret loopenergy_secret
+  - platform: wirelesstag
+    monitored_conditions:
+      - temperature
+      - humidity
+      - light
+binary_sensor:
+  - platform: wirelesstag
+    monitored_conditions:
+      - presence
+      - motion
+      - cold
+      - heat
+      - dry
+      - wet
+      - light
+      - battery
 
 notify:
   - name: homeassistant
@@ -219,4 +236,7 @@ google_assistant:
       expose: true
       name: Living Room High
 
+wirelesstag:
+  username: !secret wirelesstag_username
+  password: !secret wirelesstag_password
 

@@ -36,9 +36,9 @@ hallway:
 all_shared_spaces:
   name: All Shared Spaces
   entities:
-    - groups.living_room
-    - groups.dining_room
-    - groups.hallway
+    - group.living_room
+    - group.dining_room
+    - group.hallway
 heating:
   name: Heating
   entities:
