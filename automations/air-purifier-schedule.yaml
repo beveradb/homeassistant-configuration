@@ -1,0 +1,39 @@
+- id: '1545429145548'
+  alias: Dyson Fan On Schedule
+  trigger:
+  - at: 02:00:00
+    platform: time
+  - at: '10:00:00'
+    platform: time
+  - at: '18:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: fan.hallway
+    service: fan.turn_on
+  - data:
+      entity_id: fan.hallway
+      speed: auto
+    service: fan.set_speed
+  - data:
+      entity_id: fan.hallway
+      oscillating: true
+    service: fan.oscillate
+  initial_state: true
+
+- id: '1545429935532'
+  alias: Dyson Fan Off Schedule
+  trigger:
+  - at: 06:00:00
+    platform: time
+  - at: '12:00:00'
+    platform: time
+  - at: '20:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: fan.hallway
+    service: fan.turn_off
+  initial_state: true

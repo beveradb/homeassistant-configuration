@@ -1,0 +1,11 @@
+heating_boost:
+  alias: 'Boost: Heating for 3 hours'
+  sequence:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: group.heating
+  - delay: 03:00
+  - service: homeassistant.turn_off
+    data:
+      entity_id: group.heating
+    

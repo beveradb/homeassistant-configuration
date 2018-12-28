@@ -1,0 +1,121 @@
+- id: '1545430945695'
+  alias: Flash colours in living room at 3:30am so Andrew goes to bed
+  trigger:
+  - at: 03:30:00
+    platform: time
+  - platform: webhook
+    webhook_id: living_room_flashing_warning
+  - at: 03:45:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: blue
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: red
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      color_name: papayawhip
+      entity_id: light.living_room_uplighter
+    service: light.turn_on
+  - delay: '1'
+  - data:
+      entity_id: light.living_room_uplighter
+    service: light.turn_off
+  initial_state: true

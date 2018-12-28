@@ -1,0 +1,40 @@
+
+- name: Bedroom Off
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: false
+    light.bedside_table_lamp:
+      state: false
+
+- name: Bedroom Low
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: true
+      color_temp: 500
+      brightness_pct: 20
+    light.bedside_table_lamp:
+      state: true
+      color_temp: 500
+      brightness_pct: 20
+
+- name: Bedroom Medium
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: true
+      color_temp: 500
+      brightness_pct: 50
+    light.bedside_table_lamp:
+      state: true
+      color_temp: 500
+      brightness_pct: 50
+
+- name: Bedroom High
+  entities:
+    light.master_bedroom_ceiling_pendant:
+      state: true
+      color_temp: 500
+      brightness_pct: 100
+    light.bedside_table_lamp:
+      state: true
+      color_temp: 500
+      brightness_pct: 100

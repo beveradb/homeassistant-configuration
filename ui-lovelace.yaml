@@ -13,8 +13,11 @@ views:
       - type: custom:vertical-stack-in-card
         cards:
           - type: picture-glance
-            image: /local/living_room.png
             title: 'Living room'
+            state_image:
+              "on": /local/living_room.png
+              "off": /local/living_room_dark.png
+            entity: group.living_room
             tap_action:
               action: call-service
               service: homeassistant.toggle
@@ -45,38 +48,51 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.living_room_high
-              - entity: group.living_room_switches
-                tap_action:
-                  action: call-service
-                  service: homeassistant.toggle
-                  service_data:
-                    entity_id: group.living_room_switches
 
           - type: picture-glance
-            image: /local/kitchen.png
             title: 'Kitchen'
-            tap_action:
-              action: call-service
-              service: homeassistant.toggle
-              service_data:
-                entity_id: group.kitchen
-            entities:
-              - entity: switch.dining_room_ceiling
-
-          - type: picture-glance
-            image: /local/dining_room.png
-            title: 'Dining room'
+            state_image:
+              "on": /local/kitchen.png
+              "off": /local/kitchen_dark.png
+            entity: group.dining_room
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
                 entity_id: group.dining_room
             entities:
-              - entity: switch.dining_room_ceiling
+              - entity: scene.dining_room_off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.dining_room_off
 
           - type: picture-glance
-            image: /local/hallway.png
+            title: 'Dining room'
+            state_image:
+              "on": /local/dining_room.png
+              "off": /local/dining_room_dark.png
+            entity: group.dining_room
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: group.dining_room
+            entities:
+              - entity: scene.dining_room_off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.dining_room_off
+
+          - type: picture-glance
             title: 'Hallway'
+            state_image:
+              "on": /local/hallway.png
+              "off": /local/hallway_dark.png
+            entity: group.hallway
             tap_action:
               action: call-service
               service: homeassistant.toggle
@@ -109,8 +125,11 @@ views:
                     entity_id: scene.hallway_high
 
           - type: picture-glance
-            image: /local/master_bedroom.png
             title: 'Bedroom'
+            state_image:
+              "on": /local/master_bedroom.png
+              "off": /local/master_bedroom_dark.png
+            entity: group.bedroom
             tap_action:
               action: call-service
               service: homeassistant.toggle
@@ -168,6 +187,30 @@ views:
                         entity_id: group.heating
                   - entity: sensor.power_usage
                     name: 'Electricity'
+                  - entity: automation.weekdays_heating_on
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: automation.weekdays_heating_on
+                  - entity: automation.weekdays_heating_off
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: automation.weekdays_heating_off
+                  - entity: automation.weekends_heating_on
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: automation.weekends_heating_on
+                  - entity: automation.weekends_heating_off
+                    tap_action:
+                      action: call-service
+                      service_data:
+                        entity_id: automation.weekends_heating_off
+                      service: homeassistant.toggle
     
               - type: history-graph
                 entities:

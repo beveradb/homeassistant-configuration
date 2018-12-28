@@ -1,0 +1,11 @@
+
+- name: Kitchen Off
+  entities:
+    switch.kitchen_ceiling:
+      state: false
+      
+- name: Kitchen On
+  entities:
+    switch.kitchen_ceiling:
+      state: true
+

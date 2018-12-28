@@ -1,0 +1,68 @@
+- id: toggle_landing_light
+  alias: Toggle Landing Light Switch
+  trigger:
+  - platform: event
+    event_data: {}
+    event_type: finish_dash_button_pressed
+  - platform: event
+    event_data: {}
+    event_type: andrex_dash_button_pressed
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_hallway
+  - service: notify.homeassistant
+    data:
+      message: Hallway switched {{ states('light.hallway') }} via landing dash button
+  initial_state: true
+
+- id: toggle_bedroom_light
+  alias: Toggle Bedroom Light Switch
+  trigger:
+  - platform: event
+    event_data: {}
+    event_type: ariel_dash_button_pressed
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_bedroom
+  - data:
+      message: Bedroom light switched {{ states('light.bedroom') }} via dash button
+    service: notify.homeassistant
+  initial_state: true
+
+- id: toggle_dining_room_light
+  alias: Toggle Dining Room Light Dettol Dash
+  trigger:
+  - platform: event
+    event_data: {}
+    event_type: dettol_dash_button_pressed
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_dining_room
+  - data:
+      message: Dining room light switched {{ states('switch.dining_room_ceiling') }} via dash button
+    service: notify.homeassistant
+  initial_state: true
+
+- id: toggle_kitchen_light
+  alias: Toggle Kitchen Light Whiskas Dash
+  trigger:
+  - platform: event
+    event_data: {}
+    event_type: whiskas_dash_button_pressed
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_kitchen
+  - data:
+      message: Kitchen light switched {{ states('switch.kitchen_ceiling') }} via dash button
+    service: notify.homeassistant
+  initial_state: true
+
+

@@ -1,0 +1,12 @@
+
+- name: Dining Room Off
+  entities:
+    switch.dining_room_ceiling:
+      state: false
+      
+- name: Dining Room On
+  entities:
+    switch.dining_room_ceiling:
+      state: true
+
+

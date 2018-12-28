@@ -1,0 +1,23 @@
+- id: '1545371565523'
+  alias: Turn Porch Light On At 4PM
+  trigger:
+  - at: '16:00:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.porch_outdoor_light
+    service: light.turn_on
+  initial_state: true
+
+- id: '1545371589939'
+  alias: Turn Porch Light Off At 10:30PM
+  trigger:
+  - at: '22:30:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.porch_outdoor_light
+    service: light.turn_off
+  initial_state: true

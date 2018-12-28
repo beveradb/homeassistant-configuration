@@ -6,8 +6,11 @@
 !*.yaml
 !.gitignore
 !*.md
-!www/*
 !www
+!scenes
+!scripts
+!automations
+!groups
 
 # Ignore folders.
 .storage

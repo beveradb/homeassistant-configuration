@@ -1,0 +1,101 @@
+- id: weekdays_heating_on
+  alias: Weekdays Heating On
+  trigger:
+  - at: 05:00:00
+    platform: time
+  - at: '16:00:00'
+    platform: time
+  - at: '20:00:00'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data:
+      entity_id:
+      - group.heating
+    service: switch.turn_on
+  - data:
+      message: Heating switched on by homeassistant according to weekday schedule
+    service: notify.homeassistant
+  initial_state: false
+
+- id: weekdays_heating_off
+  alias: Weekdays Heating Off
+  trigger:
+  - at: 09:00:00
+    platform: time
+  - at: '18:00:00'
+    platform: time
+  - at: '22:00:00'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data:
+      entity_id:
+      - group.heating
+    service: switch.turn_off
+  - data:
+      message: Heating switched off by homeassistant according to weekday schedule
+    service: notify.homeassistant
+  initial_state: false
+
+- id: weekends_heating_on
+  alias: Weekends Heating On
+  trigger:
+  - at: 08:00:00
+    platform: time
+  - at: '14:00:00'
+    platform: time
+  - at: '20:00:00'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - sat
+    - sun
+  action:
+  - data:
+      entity_id:
+      - group.heating
+    service: switch.turn_on
+  - data:
+      message: Heating switched on by homeassistant according to weekend schedule
+    service: notify.homeassistant
+  initial_state: false
+
+- id: weekends_heating_off
+  alias: Weekends Heating Off
+  trigger:
+  - at: '11:00:00'
+    platform: time
+  - at: '17:00:00'
+    platform: time
+  - at: '22:00:00'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - sat
+    - sun
+  action:
+  - data:
+      entity_id:
+      - group.heating
+    service: switch.turn_off
+  - data:
+      message: Heating switched off by homeassistant according to weekend schedule
+    service: notify.homeassistant
+  initial_state: false

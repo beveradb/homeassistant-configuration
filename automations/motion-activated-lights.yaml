@@ -1,0 +1,56 @@
+- alias: Motion Activated Bedroom Light
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_motion
+    to: 'on'
+  condition:
+    - condition: time
+      after: '10:00:00'
+      before: '22:00:00'
+    - condition: state
+      entity_id: light.master_bedroom_ceiling_pendant
+      state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: scene.bedroom_medium
+    - service: notify.homeassistant
+      data:
+        message: Bedroom switched {{ states('light.hallway') }} via motion sensor
+
+- alias: Motion Activated Hallway Light
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_motion
+    to: 'on'
+  condition:
+    - condition: time
+      after: '10:00:00'
+      before: '22:00:00'
+    - condition: state
+      entity_id: light.hallway
+      state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: scene.hallway_medium
+    - service: notify.homeassistant
+      data:
+        message: Hallway switched {{ states('light.hallway') }} via motion sensor
+        
+- alias: Motion Activated Living Room Light
+  trigger:
+    platform: state
+    entity_id: binary_sensor.living_room_motion
+    to: 'on'
+  condition:
+    - condition: time
+      after: '10:00:00'
+      before: '22:00:00'
+    - condition: state
+      entity_id: light.living_room
+      state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: scene.living_room_medium
+    - service: notify.homeassistant
+      data:
+        message: Living room switched {{ states('light.hallway') }} via motion sensor

@@ -1,0 +1,61 @@
+toggle_living_room:
+  alias: 'Toggle Living Room'
+  sequence:
+  - service: scene.turn_on
+    data_template:
+      entity_id: >-
+        {% if is_state('light.living_room', 'off') %}
+          scene.living_room_medium
+        {% else %}
+          scene.living_room_off
+        {% endif %}
+
+toggle_hallway:
+  alias: 'Toggle Hallway'
+  sequence:
+  - service: scene.turn_on
+    data_template:
+      entity_id: >-
+        {% if is_state('light.hallway', 'off') %}
+          scene.hallway_medium
+        {% else %}
+          scene.hallway_off
+        {% endif %}
+
+toggle_bedroom:
+  alias: 'Toggle Bedroom'
+  sequence:
+  - service: scene.turn_on
+    data_template:
+      entity_id: >-
+        {% if is_state('light.bedroom', 'off') %}
+          scene.bedroom_medium
+        {% else %}
+          scene.bedroom_off
+        {% endif %}
+
+toggle_dining_room:
+  alias: 'Toggle Dining Room'
+  sequence:
+  - service: scene.turn_on
+    data_template:
+      entity_id: >-
+        {% if is_state('switch.dining_room_ceiling', 'off') %}
+          scene.dining_room_on
+        {% else %}
+          scene.dining_room_off
+        {% endif %}
+
+toggle_kitchen:
+  alias: 'Toggle Kitchen'
+  sequence:
+  - service: scene.turn_on
+    data_template:
+      entity_id: >-
+        {% if is_state('switch.kitchen_ceiling', 'off') %}
+          scene.kitchen_on
+        {% else %}
+          scene.kitchen_off
+        {% endif %}
+
+

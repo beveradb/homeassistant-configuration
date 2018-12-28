@@ -1,0 +1,14 @@
+- id: save_power_at_night
+  alias: Save Power at 1am
+  trigger:
+  - at: 01:00:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - group.all_shared_spaces
+    service: homeassistant.turn_off
+  - data:
+      message: All shared spaces switched off by homeassistant to save power
+    service: notify.homeassistant
