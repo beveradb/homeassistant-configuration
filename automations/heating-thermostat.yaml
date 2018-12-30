@@ -1,0 +1,19 @@
+- id: thermostat_heating_off
+  alias: Thermostat Heating Off
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperature
+    above: 21
+  condition:
+    - condition: state
+      entity_id: group.heating
+      state: 'on'
+  action:
+  - data:
+      entity_id:
+      - group.heating
+    service: switch.turn_off
+  - data:
+      message: Heating switched off by homeassistant because Hallway temperature is 21 degrees
+    service: notify.homeassistant
+  initial_state: true
