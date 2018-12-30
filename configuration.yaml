@@ -20,6 +20,13 @@ frontend:
 lovelace:
   mode: yaml
 
+custom_updater:
+  track:
+    - cards
+    - components
+
+python_script:
+
 # Enables configuration UI
 config:
 
@@ -74,11 +81,6 @@ zone:
     longitude: -3.204456
     radius: 100
     icon: mdi:worker
-  - name: Sant Cugat
-    latitude: 41.468059
-    longitude: 2.078470
-    radius: 30000
-    icon: mdi:account-group
 
 # Track the sun
 sun:

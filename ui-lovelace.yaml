@@ -1,10 +1,16 @@
 title: 'Beveridge Home'
 resources:
-  - url: /local/stylesheet.css?v=6
-    type: css
-  - url: /local/vertical-stack-in-card.js?v=1
+  - url: /local/card-tools.js?v=5e7654
     type: js
-  - url: /local/monster-card.js?v=2
+  - url: /local/tracker-card.js?v=0.1.5
+    type: js
+  - url: /local/vertical-stack-in-card.js?v=0.0.9
+    type: js
+  - url: /local/monster-card.js?v=0.2.3
+    type: js
+  - url: /local/layout-card.js?v=bd7e5a
+    type: js
+  - url: /local/card-modder.js?v=0
     type: js
 views:
   - title: 'Home'
@@ -161,6 +167,46 @@ views:
                   service_data:
                     entity_id: scene.bedroom_high
 
+#          - type: picture-elements
+#            image: /local/hallway.png
+#            elements:
+#              - type: state-icon
+#                style: {left: 66%, top: 80%, --paper-item-icon-color: white}
+#                entity: scene.hallway_off
+#                tap_action:
+#                  action: call-service
+#                  service: scene.turn_on
+#                  service_data:
+#                    entity_id: scene.hallway_off
+#                
+#              - type: state-icon
+#                style: {left: 75%, top: 80%, --paper-item-icon-color: white}
+#                entity: scene.hallway_low
+#                tap_action:
+#                  action: call-service
+#                  service: scene.turn_on
+#                  service_data:
+#                    entity_id: scene.hallway_low
+#                    
+#              - type: state-icon
+#                style: {left: 84%, top: 80%, --paper-item-icon-color: white}
+#                entity: scene.hallway_medium
+#                tap_action:
+#                  action: call-service
+#                  service: scene.turn_on
+#                  service_data:
+#                    entity_id: scene.hallway_medium
+#                    
+#              - type: state-icon
+#                style: {left: 93%, top: 80%, --paper-item-icon-color: white}
+#                entity: scene.hallway_high
+#                tap_action:
+#                  action: call-service
+#                  service: scene.turn_on
+#                  service_data:
+#                    entity_id: scene.hallway_high
+
+
       - type: vertical-stack
         cards:
           - type: custom:vertical-stack-in-card
@@ -221,35 +267,35 @@ views:
                     name: 'Living Room'
                   - entity: sensor.wirelesstag_bedroom_temperature
                     name: 'Bedroom'
-                
-          - type: custom:vertical-stack-in-card
-            title: 'Power Usage'
-            cards:
-              - type: glance
-                columns: 4
-                entities:
-                  - entity: device_tracker.google_maps_117449761518599578465
-                    name: 'Andrew'
-                  - entity: device_tracker.google_maps_117231704443313059675
-                    name: 'Mar'
-                  - entity: switch.kettle
-                    tap_action:
-                      action: call-service
-                      service: homeassistant.toggle
-                      service_data:
-                        entity_id: switch.kettle
-                  - entity: group.all_shared_spaces
-                    name: Save Power
-                    icon: mdi:sleep
-                    tap_action:
-                      action: call-service
-                      service: homeassistant.turn_off
-                      service_data:
-                        entity_id: group.all_shared_spaces
-              - type: history-graph
-                entities:
-                  - entity: sensor.power_usage
-                    name: 'Power Usage'
+            
+      - type: custom:vertical-stack-in-card
+        title: 'Power Usage'
+        cards:
+          - type: glance
+            columns: 4
+            entities:
+              - entity: device_tracker.google_maps_117449761518599578465
+                name: 'Andrew'
+              - entity: device_tracker.google_maps_117231704443313059675
+                name: 'Mar'
+              - entity: switch.kettle
+                tap_action:
+                  action: call-service
+                  service: homeassistant.toggle
+                  service_data:
+                    entity_id: switch.kettle
+              - entity: group.all_shared_spaces
+                name: Save Power
+                icon: mdi:sleep
+                tap_action:
+                  action: call-service
+                  service: homeassistant.turn_off
+                  service_data:
+                    entity_id: group.all_shared_spaces
+          - type: history-graph
+            entities:
+              - entity: sensor.power_usage
+                name: 'Power Usage'
 
       - type: custom:vertical-stack-in-card
         title: 'Air Quality'
@@ -311,11 +357,12 @@ views:
     path: all
     panel: true
     cards:
+    
     - type: vertical-stack
       cards:
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Lights
             columns: 10
           filter:
@@ -323,7 +370,7 @@ views:
               - domain: light
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Switches
             columns: 10
           filter:
@@ -332,7 +379,7 @@ views:
               - domain: fan
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Binary Sensors
             columns: 10
           filter:
@@ -340,7 +387,7 @@ views:
               - domain: binary_sensor
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Sensors
             columns: 10
           filter:
@@ -348,7 +395,7 @@ views:
               - domain: sensor
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Devices
             columns: 10
           filter:
@@ -356,7 +403,7 @@ views:
               - domain: device_tracker
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Scripts
             columns: 10
           filter:
@@ -364,10 +411,14 @@ views:
               - domain: script
         - type: custom:monster-card
           card:
-            type: glance
+            type: entities
             title: Automations
             columns: 10
           filter:
             include:
               - domain: automation
-        
+        - type: custom:tracker-card
+          title:
+          trackers:
+            - sensor.custom_card_tracker
+            - sensor.custom_component_tracker
