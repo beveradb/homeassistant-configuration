@@ -2,7 +2,7 @@
   alias: Thermostat Heating Off
   trigger:
     platform: numeric_state
-    entity_id: sensor.temperature
+    entity_id: sensor.wirelesstag_hallway_temperature
     above: 21
   condition:
     - condition: state
