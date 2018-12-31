@@ -1,0 +1,23 @@
+:host {
+    --paper-card-header: {
+          color: green;
+    }; 
+}
+
+--paper-card-header: { color: red } 
+
+div.header {
+    position: absolute;
+    width: calc(100% - 16px);
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 16px;
+}
