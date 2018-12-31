@@ -4,6 +4,7 @@
 
 # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
+!*.py
 !.gitignore
 !*.md
 !www
@@ -11,6 +12,8 @@
 !scripts
 !automations
 !groups
+!python_scripts
+!custom_components
 
 # Ignore folders.
 .storage
