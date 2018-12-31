@@ -202,6 +202,9 @@ switch:
     host: 192.168.0.69
     local_key: !secret sonoff_tuya_1_local_key 
     device_id: !secret sonoff_tuya_1_device_id 
+  - platform: sonoff_lan_mode
+    name: Kitchen Ceiling
+    host: 192.168.0.72
 
 google_assistant:
   project_id: beveridge-homeassistant
