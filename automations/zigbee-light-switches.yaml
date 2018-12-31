@@ -1,0 +1,90 @@
+- id: landing_light_wall_switch
+  alias: Landing Light Wall Switch
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: front_landing_wall_switch
+      event: 1002
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_hallway
+  - service: notify.homeassistant
+    data:
+      message: Hallway switched {{ states('light.hallway') }} via landing wall switch
+  initial_state: true
+
+- id: hallway_light_wall_switch
+  alias: Hallway Light Wall Switch
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: hallway_wall_switch
+      event: 1002
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_hallway
+  - service: notify.homeassistant
+    data:
+      message: Hallway switched {{ states('light.hallway') }} via hallway wall switch
+  initial_state: true
+
+- id: bedroom_light_wall_switch
+  alias: Bedroom Light Wall Switch
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: master_bedroom_wall_switch
+      event: 1002
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_bedroom
+  - data:
+      message: Bedroom light switched {{ states('light.bedroom') }} via bedroom wall switch
+    service: notify.homeassistant
+  initial_state: true
+
+- id: dining_room_light_wall_switch
+  alias: Dining Room Light Wall Switch
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: dining_room_wall_switch
+      event: 1002
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_dining_room
+  - data:
+      message: Dining room light switched {{ states('switch.dining_room_ceiling') }} via wall switch
+    service: notify.homeassistant
+  initial_state: true
+
+- id: kitchen_light_wall_switch
+  alias: Kitchen Light Wall Switch
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: kitchen_wall_switch
+      event: 1002
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.toggle_kitchen
+  - data:
+      message: Kitchen light switched {{ states('switch.kitchen_ceiling') }} via wall switch
+    service: notify.homeassistant
+  initial_state: true
+

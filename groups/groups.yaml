@@ -24,6 +24,10 @@ dining_room:
   name: Dining Room
   entities:
     - switch.dining_room_ceiling
+kitchen:
+  name: Kitchen
+  entities:
+    - switch.kitchen_ceiling
 bedroom:
   name: Bedroom
   entities:
@@ -38,6 +42,7 @@ all_shared_spaces:
   entities:
     - group.living_room
     - group.dining_room
+    - group.kitchen
     - group.hallway
 heating:
   name: Heating

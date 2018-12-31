@@ -1,16 +1,16 @@
 title: 'Beveridge Home'
 resources:
-  - url: /local/card-tools.js?v=5e7654
+  - url: /local/card-tools.js?v=0a97d3
     type: js
   - url: /local/tracker-card.js?v=0.1.5
     type: js
-  - url: /local/vertical-stack-in-card.js?v=0.0.9
+  - url: /local/vertical-stack-in-card.js?v=0.1.0
     type: js
   - url: /local/monster-card.js?v=0.2.3
     type: js
   - url: /local/layout-card.js?v=bd7e5a
     type: js
-  - url: /local/card-modder.js?v=0
+  - url: /local/card-modder.js?v=35eb37
     type: js
 views:
   - title: 'Home'
@@ -60,19 +60,19 @@ views:
             state_image:
               "on": /local/kitchen.png
               "off": /local/kitchen_dark.png
-            entity: group.dining_room
+            entity: group.kitchen
             tap_action:
               action: call-service
               service: homeassistant.toggle
               service_data:
-                entity_id: group.dining_room
+                entity_id: group.kitchen
             entities:
-              - entity: scene.dining_room_off
+              - entity: scene.kitchen_off
                 tap_action:
                   action: call-service
                   service: scene.turn_on
                   service_data:
-                    entity_id: scene.dining_room_off
+                    entity_id: scene.kitchen_off
 
           - type: picture-glance
             title: 'Dining room'

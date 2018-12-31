@@ -57,6 +57,12 @@ updater:
 # Discover some devices automatically
 discovery:
 
+logger:
+  default: info
+  logs:
+    pydeconz: debug
+    homeassistant.components.deconz: debug
+
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
@@ -205,6 +211,7 @@ switch:
   - platform: sonoff_lan_mode
     name: Kitchen Ceiling
     host: 192.168.0.72
+    icon: mdi:bulb
 
 google_assistant:
   project_id: beveridge-homeassistant
