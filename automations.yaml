@@ -1,0 +1,8 @@
+- id: '1547614462739'
+  alias: Wake up alarm
+  trigger:
+  - at: '10:00:00'
+    platform: time
+  condition: []
+  action:
+  - service: light.turn_on

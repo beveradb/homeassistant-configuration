@@ -167,22 +167,23 @@ switch:
     host: 192.168.0.60
     local_key: !secret smart_plug_1_local_key
     device_id: !secret smart_plug_1_device_id
-  - platform: tuyalocal
-    name: Guest Fan Heater
-    host: 192.168.0.61
-    local_key: !secret smart_plug_2_local_key 
-    device_id: !secret smart_plug_2_device_id 
+# Commented out as this smart plug is currently disconnected due to not needing smart switch here and it confusing guests
+#  - platform: tuyalocal
+#    name: Guest Fan Heater
+#    host: 192.168.0.61
+#    local_key: !secret smart_plug_2_local_key 
+#    device_id: !secret smart_plug_2_device_id 
   - platform: tuyalocal
     name: TV Corner
     host: 192.168.0.62
     local_key: !secret smart_plug_3_local_key 
     device_id: !secret smart_plug_3_device_id 
-  - platform: tuyalocal
-    name: Desk Corner
-    host: 192.168.0.63
-    local_key: !secret smart_plug_4_local_key 
-    device_id: !secret smart_plug_4_device_id 
 # Commented out as these smart plugs are currently disconnected/unused
+#  - platform: tuyalocal
+#    name: Desk Corner
+#    host: 192.168.0.63
+#    local_key: !secret smart_plug_4_local_key 
+#    device_id: !secret smart_plug_4_device_id 
 #  - platform: tuyalocal
 #    name: Smart Plug 5
 #    host: 192.168.0.64
@@ -198,11 +199,12 @@ switch:
     host: 192.168.0.66
     local_key: !secret smart_plug_7_local_key 
     device_id: !secret smart_plug_7_device_id 
-  - platform: tuyalocal
-    name: Boiler
-    host: 192.168.0.67
-    local_key: !secret smart_plug_8_local_key 
-    device_id: !secret smart_plug_8_device_id 
+# Commented out as this smart plug is currently disconnected/unused due to boiler not needing to ever be switched off
+#  - platform: tuyalocal
+#    name: Boiler
+#    host: 192.168.0.67
+#    local_key: !secret smart_plug_8_local_key 
+#    device_id: !secret smart_plug_8_device_id 
   - platform: tuyalocal
     name: Dining Room Ceiling
     host: 192.168.0.69

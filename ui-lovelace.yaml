@@ -224,13 +224,13 @@ views:
                       service: homeassistant.toggle
                       service_data:
                         entity_id: script.heating_boost
-                  - entity: switch.boiler
+                  - entity: switch.heating
                     name: 'Heating'
                     tap_action:
                       action: call-service
                       service: homeassistant.toggle
                       service_data:
-                        entity_id: group.heating
+                        entity_id: switch.heating
                   - entity: sensor.power_usage
                     name: 'Electricity'
                   - entity: automation.weekdays_heating_on
@@ -260,7 +260,8 @@ views:
     
               - type: history-graph
                 entities:
-                  - entity: group.heating
+                  - entity: switch.boiler
+                  - entity: switch.heating
                   - entity: sensor.wirelesstag_hallway_temperature
                     name: 'Hallway'
                   - entity: sensor.wirelesstag_living_room_temperature

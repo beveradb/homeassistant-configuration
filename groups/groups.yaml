@@ -44,11 +44,7 @@ all_shared_spaces:
     - group.dining_room
     - group.kitchen
     - group.hallway
-heating:
-  name: Heating
-  entities:
-    - switch.heating
-    - switch.boiler
+
 
 
 

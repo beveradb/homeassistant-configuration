@@ -3,9 +3,9 @@ heating_boost:
   sequence:
   - service: homeassistant.turn_on
     data:
-      entity_id: group.heating
+      entity_id: switch.heating
   - delay: 03:00
   - service: homeassistant.turn_off
     data:
-      entity_id: group.heating
+      entity_id: switch.heating
     

@@ -2,18 +2,18 @@
   alias: Thermostat Heating Off
   trigger:
     platform: numeric_state
-    entity_id: sensor.wirelesstag_hallway_temperature
+    entity_id: sensor.wirelesstag_living_room_temperature
     above: 21
   condition:
     - condition: state
-      entity_id: group.heating
+      entity_id: switch.heating
       state: 'on'
   action:
   - data:
       entity_id:
-      - group.heating
+      - switch.heating
     service: switch.turn_off
   - data:
-      message: Heating switched off by homeassistant because Hallway temperature is 21 degrees
+      message: Heating switched off by homeassistant because Living Room temperature is 21 degrees
     service: notify.homeassistant
   initial_state: true

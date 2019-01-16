@@ -18,7 +18,7 @@
   action:
   - data:
       entity_id:
-      - group.heating
+      - switch.heating
     service: switch.turn_on
   - data:
       message: Heating switched on by homeassistant according to weekday schedule
@@ -45,7 +45,7 @@
   action:
   - data:
       entity_id:
-      - group.heating
+      - switch.heating
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant according to weekday schedule
@@ -69,7 +69,7 @@
   action:
   - data:
       entity_id:
-      - group.heating
+      - switch.heating
     service: switch.turn_on
   - data:
       message: Heating switched on by homeassistant according to weekend schedule
@@ -93,7 +93,7 @@
   action:
   - data:
       entity_id:
-      - group.heating
+      - switch.heating
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant according to weekend schedule
