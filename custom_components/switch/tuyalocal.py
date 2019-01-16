@@ -10,7 +10,6 @@ from homeassistant.const import (CONF_NAME, CONF_HOST, CONF_ID, CONF_SWITCHES, C
 import homeassistant.helpers.config_validation as cv
 from time import time
 from threading import Lock
-import pytuya
 
 REQUIREMENTS = ['pytuya==7.0.2']
 

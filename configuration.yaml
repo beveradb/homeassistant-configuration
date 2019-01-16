@@ -33,7 +33,7 @@ config:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   base_url: https://home.beveridge.uk
-  server_port: 8124
+  server_port: 8123
   api_password: !secret http_api_password
   cors_allowed_origins:
     - https://google.com
@@ -41,8 +41,10 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 127.0.0.1
+    - 172.16.0.0/12
   trusted_networks:
     - 127.0.0.1
+    - 172.16.0.0/12
     - 192.168.0.0/24
 
 # Checks for available updates
@@ -95,15 +97,15 @@ zone:
 sun:
 
 # Text to speech
-tts:
-  - platform: google
+#tts:
+#  - platform: google
 
 # Cloud
-cloud:
+#cloud:
 
-mqtt:
-  broker: 192.168.0.15
-  client_id: hassmqttclient
+#mqtt:
+#  broker: 192.168.0.15
+#  client_id: hassmqttclient
 
 group: !include_dir_merge_named groups
 scene: !include_dir_merge_list scenes
@@ -137,11 +139,6 @@ binary_sensor:
     monitored_conditions:
       - presence
       - motion
-      - cold
-      - heat
-      - dry
-      - wet
-      - light
       - battery
 
 notify:
