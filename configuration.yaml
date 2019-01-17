@@ -137,14 +137,14 @@ sensor:
 binary_sensor:
   - platform: wirelesstag
     monitored_conditions:
-      - presence
       - motion
       - battery
 
 notify:
-  - name: homeassistant
-    platform: pushbullet
-    api_key: !secret pushbullet_api_key
+  - platform: slack
+    name: 'slack'
+    api_key: 'xoxb-106807445399-528202600182-xvYyeJBWYr9uBzrzQBv1GZg8'
+    default_channel: '#bots'
 
 device_tracker:
   - platform: google_maps

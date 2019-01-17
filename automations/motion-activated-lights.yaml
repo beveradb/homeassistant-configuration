@@ -13,7 +13,7 @@
   action:
     - service: homeassistant.turn_on
       entity_id: scene.bedroom_medium
-    - service: notify.homeassistant
+    - service: notify.slack
       data:
         message: Bedroom switched {{ states('light.hallway') }} via motion sensor
 
@@ -32,7 +32,7 @@
   action:
     - service: homeassistant.turn_on
       entity_id: scene.hallway_medium
-    - service: notify.homeassistant
+    - service: notify.slack
       data:
         message: Hallway switched {{ states('light.hallway') }} via motion sensor
         
@@ -44,13 +44,13 @@
   condition:
     - condition: time
       after: '10:00:00'
-      before: '22:00:00'
+      before: '23:30:00'
     - condition: state
       entity_id: light.living_room
       state: 'off'
   action:
     - service: homeassistant.turn_on
       entity_id: scene.living_room_medium
-    - service: notify.homeassistant
+    - service: notify.slack
       data:
         message: Living room switched {{ states('light.hallway') }} via motion sensor

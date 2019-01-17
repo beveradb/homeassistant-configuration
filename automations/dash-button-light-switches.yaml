@@ -9,7 +9,7 @@
   - service: script.turn_on
     data:
       entity_id: script.toggle_hallway
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Hallway switched {{ states('light.hallway') }} via landing dash button
   initial_state: true
@@ -25,7 +25,7 @@
   - service: script.turn_on
     data:
       entity_id: script.toggle_hallway
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Hallway switched {{ states('light.hallway') }} via hallway dash button
   initial_state: true
@@ -43,7 +43,7 @@
       entity_id: script.toggle_bedroom
   - data:
       message: Bedroom light switched {{ states('light.bedroom') }} via dash button
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: dining_room_light_dash
@@ -59,7 +59,7 @@
       entity_id: script.toggle_dining_room
   - data:
       message: Dining room light switched {{ states('switch.dining_room_ceiling') }} via dash button
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: kitchen_light_dash
@@ -75,7 +75,7 @@
       entity_id: script.toggle_kitchen
   - data:
       message: Kitchen light switched {{ states('switch.kitchen_ceiling') }} via dash button
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 

@@ -22,7 +22,7 @@
     service: switch.turn_on
   - data:
       message: Heating switched on by homeassistant according to weekday schedule
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: weekdays_heating_off
@@ -49,7 +49,7 @@
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant according to weekday schedule
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: weekends_heating_on
@@ -73,7 +73,7 @@
     service: switch.turn_on
   - data:
       message: Heating switched on by homeassistant according to weekend schedule
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: weekends_heating_off
@@ -97,5 +97,5 @@
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant according to weekend schedule
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true

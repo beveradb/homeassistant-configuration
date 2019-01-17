@@ -11,7 +11,7 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.living_room
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Living room toggled via sofa switch
   initial_state: true
@@ -29,7 +29,7 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.living_room_uplighter
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Living room uplighter toggled via test switch
   initial_state: true
@@ -47,7 +47,7 @@
   - service: light.turn_on
     data:
       entity_id: light.living_room
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Living room switched on via dimmer switch
   initial_state: true
@@ -70,7 +70,7 @@
   - service: scene.turn_on
     data:
       entity_id: scene.living_room_high
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Living room bright scene activated via dimmer switch
   initial_state: true
@@ -93,7 +93,7 @@
   - service: scene.turn_on
     data:
       entity_id: scene.living_room_low
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Living room bright scene activated via dimmer switch
   initial_state: true
@@ -111,7 +111,7 @@
   - service: light.turn_off
     data:
       entity_id: light.living_room
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Living room switched off via dimmer switch
   initial_state: true
@@ -132,7 +132,7 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.front_landing
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Hallway switched {{ states('light.hallway') }} via landing wall switch
   initial_state: true
@@ -153,7 +153,7 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.front_landing
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Hallway switched {{ states('light.hallway') }} via hallway wall switch
   initial_state: true
@@ -173,7 +173,7 @@
       entity_id: light.bedroom
   - data:
       message: Bedroom light switched {{ states('light.bedroom') }} via bedroom wall switch
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: bedroom_switch_bright
@@ -189,7 +189,7 @@
   - service: scene.turn_on
     data:
       entity_id: scene.bedroom_high
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Bedroom bright scene activated via wall switch
   initial_state: true
@@ -207,7 +207,7 @@
   - service: scene.turn_on
     data:
       entity_id: scene.bedroom_low
-  - service: notify.homeassistant
+  - service: notify.slack
     data:
       message: Bedroom dim scene activated via wall switch
   initial_state: true
@@ -227,7 +227,7 @@
       entity_id: script.toggle_dining_room
   - data:
       message: Dining room light switched {{ states('switch.dining_room_ceiling') }} via wall switch
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 
 - id: kitchen_light_wall_switch
@@ -245,6 +245,6 @@
       entity_id: script.toggle_kitchen
   - data:
       message: Kitchen light switched {{ states('switch.kitchen_ceiling') }} via wall switch
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
 

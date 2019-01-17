@@ -15,5 +15,5 @@
     service: switch.turn_off
   - data:
       message: Heating switched off by homeassistant because Living Room temperature is 21 degrees
-    service: notify.homeassistant
+    service: notify.slack
   initial_state: true
