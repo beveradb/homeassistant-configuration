@@ -336,9 +336,9 @@ views:
 
           - type: history-graph
             entities:
-              - entity: sensor.hallway_particulate_matter_25_gm3
+              - entity: sensor.hallway_particulate_matter_2_5_mg_m3
                 name: 'PM2.5'
-              - entity: sensor.hallway_particulate_matter_10_gm3
+              - entity: sensor.hallway_particulate_matter_10_mg_m3
                 name: 'PM10'
 
           - type: history-graph

@@ -143,7 +143,7 @@ binary_sensor:
 notify:
   - platform: slack
     name: 'slack'
-    api_key: 'xoxb-106807445399-528202600182-xvYyeJBWYr9uBzrzQBv1GZg8'
+    api_key: !secret projectbread_slack_bot_token
     default_channel: '#bots'
 
 device_tracker:
