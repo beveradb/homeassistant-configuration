@@ -1,7 +1,7 @@
 - id: weekdays_heating_on
   alias: Weekdays Heating On
   trigger:
-  - at: 05:00:00
+  - at: 06:05:00
     platform: time
   - at: '16:00:00'
     platform: time

@@ -71,8 +71,8 @@ conversation:
 # Enables support for tracking state changes over time
 history:
 
-recorder:
-  db_url: !secret cloud_sql_postgresql
+#recorder:
+#  db_url: !secret cloud_sql_postgresql
 
 # View all events in a logbook
 logbook:
@@ -102,10 +102,6 @@ sun:
 
 # Cloud
 #cloud:
-
-#mqtt:
-#  broker: 192.168.0.15
-#  client_id: hassmqttclient
 
 group: !include_dir_merge_named groups
 scene: !include_dir_merge_list scenes
@@ -161,23 +157,23 @@ device_tracker:
 
 # Instead, we've replaced this with the local pytuya-based version below, from https://github.com/slomanl1/tuya-homeassistant 
 
-switch:
-  - platform: tuyalocal
-    name: Kettle
-    host: 192.168.0.60
-    local_key: !secret smart_plug_1_local_key
-    device_id: !secret smart_plug_1_device_id
+#switch:
+#  - platform: tuyalocal
+#    name: Kettle
+#    host: 192.168.0.60
+#    local_key: !secret smart_plug_1_local_key
+#    device_id: !secret smart_plug_1_device_id
 # Commented out as this smart plug is currently disconnected due to not needing smart switch here and it confusing guests
 #  - platform: tuyalocal
 #    name: Guest Fan Heater
 #    host: 192.168.0.61
 #    local_key: !secret smart_plug_2_local_key 
 #    device_id: !secret smart_plug_2_device_id 
-  - platform: tuyalocal
-    name: TV Corner
-    host: 192.168.0.62
-    local_key: !secret smart_plug_3_local_key 
-    device_id: !secret smart_plug_3_device_id 
+#  - platform: tuyalocal
+#    name: TV Corner
+#    host: 192.168.0.62
+#    local_key: !secret smart_plug_3_local_key 
+#    device_id: !secret smart_plug_3_device_id 
 # Commented out as these smart plugs are currently disconnected/unused
 #  - platform: tuyalocal
 #    name: Desk Corner
@@ -194,26 +190,26 @@ switch:
 #    host: 192.168.0.65
 #    local_key: !secret smart_plug_6_local_key 
 #    device_id: !secret smart_plug_6_device_id 
-  - platform: tuyalocal
-    name: Heating
-    host: 192.168.0.66
-    local_key: !secret smart_plug_7_local_key 
-    device_id: !secret smart_plug_7_device_id 
+#  - platform: tuyalocal
+#    name: Heating
+#    host: 192.168.0.66
+#    local_key: !secret smart_plug_7_local_key 
+#    device_id: !secret smart_plug_7_device_id 
 # Commented out as this smart plug is currently disconnected/unused due to boiler not needing to ever be switched off
 #  - platform: tuyalocal
 #    name: Boiler
 #    host: 192.168.0.67
 #    local_key: !secret smart_plug_8_local_key 
 #    device_id: !secret smart_plug_8_device_id 
-  - platform: tuyalocal
-    name: Dining Room Ceiling
-    host: 192.168.0.69
-    local_key: !secret sonoff_tuya_1_local_key 
-    device_id: !secret sonoff_tuya_1_device_id 
-  - platform: sonoff_lan_mode
-    name: Kitchen Ceiling
-    host: 192.168.0.72
-    icon: mdi:bulb
+#  - platform: tuyalocal
+#    name: Dining Room Ceiling
+#    host: 192.168.0.69
+#    local_key: !secret sonoff_tuya_1_local_key 
+#    device_id: !secret sonoff_tuya_1_device_id 
+#switch:
+#  - platform: sonoff_lan_mode
+#    name: Kitchen Ceiling
+#    host: 192.168.0.72
 
 google_assistant:
   project_id: beveridge-homeassistant

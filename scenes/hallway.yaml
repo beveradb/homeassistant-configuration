@@ -3,39 +3,37 @@
   entities:
     light.hallway:
       state: false
-    light.front_landing:
-      state: false
 
-- name: Hallway Low
-  entities:
-    light.hallway:
-      state: true
-      color_temp: 500
-      brightness_pct: 20
-    light.front_landing:
-      state: true
-      color_temp: 500
-      brightness_pct: 20
+#- name: Hallway Low
+#  entities:
+#    light.hallway:
+#      state: true
+#      color_temp: 500
+#      brightness_pct: 20
+#    light.front_landing:
+#      state: true
+#      color_temp: 500
+#      brightness_pct: 20
 
-- name: Hallway Medium
-  entities:
-    light.hallway:
-      state: true
-      color_temp: 500
-      brightness_pct: 50
-    light.front_landing:
-      state: true
-      color_temp: 500
-      brightness_pct: 50
+#- name: Hallway Medium
+#  entities:
+#    light.hallway:
+#      state: true
+#      color_temp: 500
+#      brightness_pct: 50
+#    light.front_landing:
+#      state: true
+#      color_temp: 500
+#      brightness_pct: 50
 
-- name: Hallway High
-  entities:
-    light.hallway:
-      state: true
-      color_temp: 500
-      brightness_pct: 100
-    light.front_landing:
-      state: true
-      color_temp: 500
-      brightness_pct: 100
+#- name: Hallway High
+#  entities:
+#    light.hallway:
+#      state: true
+#      color_temp: 500
+#      brightness_pct: 100
+#    light.front_landing:
+#      state: true
+#      color_temp: 500
+#      brightness_pct: 100
 

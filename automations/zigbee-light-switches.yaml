@@ -1,4 +1,5 @@
 - id: living_room_sofa_switch
+  initial_state: true
   alias: Living Room Sofa Switch
   trigger:
   - platform: event
@@ -11,48 +12,53 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.living_room
-  - service: notify.slack
-    data:
-      message: Living room toggled via sofa switch
-  initial_state: true
+#  - service: notify.slack
+#    data:
+#      message: Living room toggled via sofa switch
 
-- id: spare_switch_test
-  alias: Spare Switch Test
-  trigger:
-  - platform: event
-    event_type: deconz_event
-    event_data:
-      id: spare_smart_switch_1
-      event: 1002
-  condition: []
-  action:
-  - service: homeassistant.toggle
-    data:
-      entity_id: light.living_room_uplighter
-  - service: notify.slack
-    data:
-      message: Living room uplighter toggled via test switch
-  initial_state: true
+#- id: living_room_dimmer_switch_on
+#  initial_state: true
+#  alias: Living Room Dimmer Switch On
+#  trigger:
+#  - platform: event
+#    event_type: deconz_event
+#    event_data:
+#      id: living_room_dimmer_switch
+#      event: 1002
+#  condition: []
+#  action:
+#  - service: light.turn_on
+#    data:
+#      entity_id: light.living_room
+#  - service: notify.slack
+#    data:
+#      message: Living room switched on via dimmer switch
 
-- id: living_room_dimmer_switch_on
-  alias: Living Room Dimmer Switch On
+- id: living_room_dimmer_switch_relax
+  initial_state: true
+  alias: Living Room Dimmer Switch Relax
   trigger:
   - platform: event
     event_type: deconz_event
     event_data:
       id: living_room_dimmer_switch
-      event: 1002
+      event: 3002
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_sofa_switch
+      event: 1004
   condition: []
   action:
-  - service: light.turn_on
+  - service: scene.turn_on
     data:
-      entity_id: light.living_room
-  - service: notify.slack
-    data:
-      message: Living room switched on via dimmer switch
-  initial_state: true
+      entity_id: scene.living_room_relax
+#  - service: notify.slack
+#    data:
+#      message: Living room bright scene activated via dimmer switch
 
 - id: living_room_dimmer_switch_bright
+  initial_state: true
   alias: Living Room Dimmer Switch Bright
   trigger:
   - platform: event
@@ -64,60 +70,37 @@
     event_type: deconz_event
     event_data:
       id: living_room_sofa_switch
-      event: 1004
-  condition: []
-  action:
-  - service: scene.turn_on
-    data:
-      entity_id: scene.living_room_high
-  - service: notify.slack
-    data:
-      message: Living room bright scene activated via dimmer switch
-  initial_state: true
-
-- id: living_room_dimmer_switch_dim
-  alias: Living Room Dimmer Switch Dim
-  trigger:
-  - platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_dimmer_switch
-      event: 3002
-  - platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_sofa_switch
       event: 1005
   condition: []
   action:
   - service: scene.turn_on
     data:
-      entity_id: scene.living_room_low
-  - service: notify.slack
-    data:
-      message: Living room bright scene activated via dimmer switch
-  initial_state: true
+      entity_id: scene.living_room_bright
+#  - service: notify.slack
+#    data:
+#      message: Living room bright scene activated via dimmer switch
 
-- id: living_room_dimmer_switch_off
-  alias: Living Room Dimmer Switch Off
-  trigger:
-  - platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_dimmer_switch
-      event: 4002
-  condition: []
-  action:
-  - service: light.turn_off
-    data:
-      entity_id: light.living_room
-  - service: notify.slack
-    data:
-      message: Living room switched off via dimmer switch
-  initial_state: true
+#- id: living_room_dimmer_switch_off
+#  initial_state: true
+#  alias: Living Room Dimmer Switch Off
+#  trigger:
+#  - platform: event
+#    event_type: deconz_event
+#    event_data:
+#      id: living_room_dimmer_switch
+#      event: 4002
+#  condition: []
+#  action:
+#  - service: light.turn_off
+#    data:
+#      entity_id: light.living_room
+#  - service: notify.slack
+#    data:
+#      message: Living room switched off via dimmer switch
 
-- id: landing_light_wall_switch
-  alias: Landing Light Wall Switch
+- id: front_landing_wall_switch
+  initial_state: true
+  alias: Front Landing Wall Switch
   trigger:
   - platform: event
     event_type: deconz_event
@@ -129,16 +112,67 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.hallway
-  - service: homeassistant.toggle
-    data:
-      entity_id: light.front_landing
-  - service: notify.slack
-    data:
-      message: Hallway switched {{ states('light.hallway') }} via landing wall switch
-  initial_state: true
+#  - service: notify.slack
+#    data:
+#      message: Hallway toggled via front_landing wall switch
 
-- id: hallway_light_wall_switch
-  alias: Hallway Light Wall Switch
+- id: front_landing_wall_switch_sleep
+  initial_state: true
+  alias: Front Landing Wall Switch Sleep
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: front_landing_wall_switch
+      event: 1004
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.hallway_sleep
+#  - service: notify.slack
+#    data:
+#      message: Hallway bright scene activated via wall switch
+
+- id: front_landing_wall_switch_relax
+  initial_state: true
+  alias: Front Landing Wall Switch Relax
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: front_landing_wall_switch
+      event: 1005
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.hallway_relax
+#  - service: notify.slack
+#    data:
+#      message: Hallway dim scene activated via wall switch
+
+- id: front_landing_wall_switch_bright
+  initial_state: true
+  alias: Front Landing Wall Switch Bright
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: front_landing_wall_switch
+      event: 1006
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.hallway_bright
+#  - service: notify.slack
+#    data:
+#      message: Hallway dim scene activated via wall switch
+
+- id: hallway_wall_switch
+  initial_state: true
+  alias: Hallway Wall Switch
   trigger:
   - platform: event
     event_type: deconz_event
@@ -150,70 +184,139 @@
   - service: homeassistant.toggle
     data:
       entity_id: light.hallway
-  - service: homeassistant.toggle
-    data:
-      entity_id: light.front_landing
-  - service: notify.slack
-    data:
-      message: Hallway switched {{ states('light.hallway') }} via hallway wall switch
-  initial_state: true
+#  - service: notify.slack
+#    data:
+#      message: Hallway switched {{ states('light.hallway') }} via hallway wall switch
 
-- id: bedroom_light_wall_switch
-  alias: Bedroom Light Wall Switch
+- id: hallway_wall_switch_sleep
+  initial_state: true
+  alias: Hallway Wall Switch Sleep
   trigger:
   - platform: event
     event_type: deconz_event
     event_data:
-      id: master_bedroom_wall_switch
+      id: hallway_wall_switch
+      event: 1004
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.hallway_sleep
+#  - service: notify.slack
+#    data:
+#      message: Hallway bright scene activated via wall switch
+
+- id: hallway_wall_switch_relax
+  initial_state: true
+  alias: Hallway Wall Switch Relax
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: hallway_wall_switch
+      event: 1005
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.hallway_relax
+#  - service: notify.slack
+#    data:
+#      message: Hallway dim scene activated via wall switch
+
+- id: hallway_wall_switch_bright
+  initial_state: true
+  alias: Hallway Wall Switch Bright
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: hallway_wall_switch
+      event: 1006
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.hallway_bright
+#  - service: notify.slack
+#    data:
+#      message: Hallway dim scene activated via wall switch
+
+- id: bedroom_wall_switch
+  initial_state: true
+  alias: Bedroom Wall Switch
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_wall_switch
       event: 1002
   condition: []
   action:
   - service: homeassistant.toggle
     data:
       entity_id: light.bedroom
-  - data:
-      message: Bedroom light switched {{ states('light.bedroom') }} via bedroom wall switch
-    service: notify.slack
-  initial_state: true
+#  - service: notify.slack
+#    data:
+#      message: Bedroom light switched {{ states('light.bedroom') }} via bedroom wall switch
 
-- id: bedroom_switch_bright
-  alias: Bedroom Switch Bright
+- id: bedroom_wall_switch_sleep
+  initial_state: true
+  alias: Bedroom Wall Switch Sleep
   trigger:
   - platform: event
     event_type: deconz_event
     event_data:
-      id: master_bedroom_wall_switch
+      id: bedroom_wall_switch
       event: 1004
   condition: []
   action:
   - service: scene.turn_on
     data:
-      entity_id: scene.bedroom_high
-  - service: notify.slack
-    data:
-      message: Bedroom bright scene activated via wall switch
-  initial_state: true
+      entity_id: scene.bedroom_sleep
+#  - service: notify.slack
+#    data:
+#      message: Bedroom bright scene activated via wall switch
 
-- id: bedroom_switch_dim
-  alias: Bedroom Switch Dim
+- id: bedroom_wall_switch_relax
+  initial_state: true
+  alias: Bedroom Wall Switch Relax
   trigger:
   - platform: event
     event_type: deconz_event
     event_data:
-      id: master_bedroom_wall_switch
+      id: bedroom_wall_switch
       event: 1005
   condition: []
   action:
   - service: scene.turn_on
     data:
-      entity_id: scene.bedroom_low
-  - service: notify.slack
-    data:
-      message: Bedroom dim scene activated via wall switch
-  initial_state: true
+      entity_id: scene.bedroom_relax
+#  - service: notify.slack
+#    data:
+#      message: Bedroom dim scene activated via wall switch
 
-- id: dining_room_light_wall_switch
-  alias: Dining Room Light Wall Switch
+- id: bedroom_wall_switch_bright
+  initial_state: true
+  alias: Bedroom Wall Switch Bright
+  trigger:
+  - platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_wall_switch
+      event: 1006
+  condition: []
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.bedroom_bright
+#  - service: notify.slack
+#    data:
+#      message: Bedroom dim scene activated via wall switch
+
+- id: dining_room_wall_switch
+  initial_state: true
+  alias: Dining Room Wall Switch
   trigger:
   - platform: event
     event_type: deconz_event
@@ -225,13 +328,13 @@
   - service: script.turn_on
     data:
       entity_id: script.toggle_dining_room
-  - data:
-      message: Dining room light switched {{ states('switch.dining_room_ceiling') }} via wall switch
-    service: notify.slack
-  initial_state: true
+#  - service: notify.slack
+#    data:
+#      message: Dining room light switched {{ states('switch.dining_room_ceiling') }} via wall switch
 
-- id: kitchen_light_wall_switch
-  alias: Kitchen Light Wall Switch
+- id: kitchen_wall_switch
+  initial_state: true
+  alias: Kitchen Wall Switch
   trigger:
   - platform: event
     event_type: deconz_event
@@ -243,8 +346,7 @@
   - service: script.turn_on
     data:
       entity_id: script.toggle_kitchen
-  - data:
-      message: Kitchen light switched {{ states('switch.kitchen_ceiling') }} via wall switch
-    service: notify.slack
-  initial_state: true
+#  - service: notify.slack
+#    data:
+#      message: Kitchen light switched {{ states('switch.kitchen_ceiling') }} via wall switch
 

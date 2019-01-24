@@ -1,4 +1,5 @@
 - alias: Motion Activated Bedroom Light
+  initial_state: true
   trigger:
     platform: state
     entity_id: binary_sensor.bedroom_motion
@@ -10,14 +11,19 @@
     - condition: state
       entity_id: light.master_bedroom_ceiling_pendant
       state: 'off'
+    - condition: template
+      value_template: '{{ states.device_tracker.google_maps_117231704443313059675.state != "home" }}' # Mar is not home
+    - condition: template
+      value_template: '{{ states.device_tracker.google_maps_117449761518599578465.state == "home" }}' # Andrew is home
   action:
     - service: homeassistant.turn_on
-      entity_id: scene.bedroom_medium
+      entity_id: scene.bedroom_high
     - service: notify.slack
       data:
         message: Bedroom switched {{ states('light.hallway') }} via motion sensor
 
 - alias: Motion Activated Hallway Light
+  initial_state: true
   trigger:
     platform: state
     entity_id: binary_sensor.hallway_motion
@@ -37,6 +43,7 @@
         message: Hallway switched {{ states('light.hallway') }} via motion sensor
         
 - alias: Motion Activated Living Room Light
+  initial_state: true
   trigger:
     platform: state
     entity_id: binary_sensor.living_room_motion

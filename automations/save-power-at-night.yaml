@@ -1,5 +1,6 @@
 - id: save_power_at_night
-  alias: Save Power at 1am
+  alias: Save Power at 4am
+  initial_state: true
   trigger:
   - at: 04:00:00
     platform: time
