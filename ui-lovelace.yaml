@@ -364,6 +364,14 @@ views:
         - type: custom:monster-card
           card:
             type: entities
+            title: Scenes
+            columns: 10
+          filter:
+            include:
+              - domain: scene
+        - type: custom:monster-card
+          card:
+            type: entities
             title: Lights
             columns: 10
           filter:
